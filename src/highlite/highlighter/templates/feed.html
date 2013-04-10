@@ -1,6 +1,12 @@
 <DOCTYPE html>
 <html lang="en">
   <head>
+<<<<<<< HEAD
+=======
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
+  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+
+>>>>>>> drag_and_drop
     <meta charset="utf-8">
     <title>Highlite</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -93,10 +99,45 @@
       <link rel="apple-touch-icon-precomposed" sizes="72x72" href="static/third_party/bootstrap/ico/apple-touch-icon-72-precomposed.png">
                     <link rel="apple-touch-icon-precomposed" href="static/third_party/bootstrap/ico/apple-touch-icon-57-precomposed.png">
                                    <link rel="shortcut icon" href="static/third_party/bootstrap/ico/favicon.png">
+<<<<<<< HEAD
   </head>
 
   <body>
 
+=======
+ <style>
+  #draggable {
+    width: 100px;
+    height: 100px;
+    background: #ccc;
+  }
+  #droppable {
+    position: absolute;
+    left: 250px;
+    top: 0;
+    width: 125px;
+    height: 125px;
+    background: #999;
+    color: #fff;
+    padding: 10px;
+  }
+  </style>
+<script>
+$( "#draggable" ).draggable();
+$( "#droppable" ).droppable({
+  drop: function() {
+    alert( "dropped" );
+  }
+});
+</script>
+
+
+</head>
+ <body>
+<div id="droppable">Drop here</div>
+<div id="draggable">Drag me</div>
+ 
+>>>>>>> drag_and_drop
     <div class="container">
 
       <div class="masthead">
@@ -133,8 +174,13 @@
 
       <hr>
 
+<<<<<<< HEAD
       <!-- Example row of columns -->
       <div class="row-fluid">
+=======
+<!---example row of columns -->
+	      <div class="row-fluid">
+>>>>>>> drag_and_drop
         <div class="span4">
           <h2>Heading</h2>
           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
@@ -176,6 +222,9 @@
     <script src="static/third_party/bootstrap/js/bootstrap-collapse.js"></script>
     <script src="static/third_party/bootstrap/js/bootstrap-carousel.js"></script>
     <script src="static/third_party/bootstrap/js/bootstrap-typeahead.js"></script>
+<<<<<<< HEAD
 
+=======
+>>>>>>> drag_and_drop
   </body>
 </html>
