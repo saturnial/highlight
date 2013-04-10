@@ -6,6 +6,7 @@ from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
      url(r'^$', include('highlite.highlighter.urls')),
+
     # url(r'^highlite/', include('highlite.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
