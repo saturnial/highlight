@@ -1,0 +1,18 @@
+[
+  {
+    "model": "highlighter.entry",
+    "pk": 1,
+    "fields": {
+      "user": "jmylen",
+      "day": "2013-04-11"
+    }
+  },
+  {
+    "model": "highlighter.entry",
+    "pk": 2,
+    "fields": {
+      "user": "jmylen",
+      "day": "2013-04-12"
+    }
+  }
+]
