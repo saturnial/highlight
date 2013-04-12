@@ -11,9 +11,18 @@ ADMINS = (
     ('Jason Mylen', 'jason.mylen@gmail.com'),
 )
 
+AUTHENTICATION_BACKENDS = (
+    'highlite.facebook.backend.FacebookBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+
+
+
 MANAGERS = ADMINS
 
 SQLLITE_DB = os.path.join(ROOT_DIR, 'db/highlite.db')
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -94,6 +103,15 @@ STATICFILES_FINDERS = (
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'ox-ou49n06puy8nq_&%=&y87cxi9t#+&th3=2mbaccw!hkz#d='
 
+FACEBOOK_APP_ID = '194793243978205' 
+FACEBOOK_APP_SECRET = 'a92584eaa7be0d36ba2b2dc37e307e27' 
+FACEBOOK_SCOPE = 'email,publish_stream'
+LOGIN_REDIRECT_URL = '/'
+AUTH_PROFILE_MODULE = 'facebook.FacebookProfile'
+
+
+
+
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
@@ -129,7 +147,9 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.admin',
     'highlite.highlighter',
+    'highlite.facebook',
     'south',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',

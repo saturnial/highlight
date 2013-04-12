@@ -1,7 +1,9 @@
 from django.shortcuts import render_to_response
+from django.shortcuts import RequestContext
 
 def index(request):
-  return render_to_response('index.html', {}) 
+  facebook_profile = request.user.get_profile().get_facebook_profile() 
+  return render_to_response('index.html', {'facebook_profile': facebook_profile}) 
 
 
 def feed(request):
