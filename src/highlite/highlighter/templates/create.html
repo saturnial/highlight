@@ -1,13 +1,16 @@
+<!--
 {% extends "base.html" %}
 
 {% block title %} Create your highlight! {% endblock %}
 
 {% block content %}
-
-<form action="/create/" method="post">
+-->
+<form action="/lite/create" method="post">
 {% csrf_token %}
 {{ form.as_p }}
 <input type="submit" value="Submit" />
 </form>
 
-{% endblock %}
+<!--
+#{% endblock %}
+-->
