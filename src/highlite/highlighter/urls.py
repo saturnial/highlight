@@ -4,6 +4,6 @@ import views
 
 urlpatterns = patterns('',
     url(r'create', views.CreateHighlight.as_view(), name='create'),
-    url(r'feed', views.feed, name='feed'),
+    url(r'feed', views.HighlightFeed.as_view(), name='feed'),
     url(r'', views.index, name='index'),
 )
