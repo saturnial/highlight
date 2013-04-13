@@ -13,13 +13,9 @@ import logging
 def index(request):
   return render_to_response('index.html', {})
 
-def feed(request):
-  facebook_profile = request.user.get_profile().get_facebook_profile()
-  return render_to_response('feed.html', {'facebook_profile': facebook_profile,
-                                          'highlights': highlights})
-
-
 class HighlightFeed(ListView):
+  """Class-based generic view listing out all highlights."""
+
   context_object_name = 'highlights'
   queryset = Highlight.objects.all()
   template_name = 'feed.html'
