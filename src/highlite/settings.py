@@ -150,6 +150,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'highlite.highlighter',
     'highlite.facebook',
+    'highlite.foursquare_auth',
     'south',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
