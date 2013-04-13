@@ -1,8 +1,11 @@
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 from django.views.generic.base import View
+from django.views.generic.list import ListView
 from django.template import RequestContext
+from django.contrib.auth.models import User
 
+from models import Highlight
 import forms
 import foursquare
 import logging
@@ -17,13 +20,12 @@ class Index(View):
 
     return render_to_response('index.html',
                               {})
-class DisplayFeed(View):
-  """Class based view for showing users their feeds."""
 
-  def get(self, request):
-    facebook_profile = request.user.get_profile().get_facebook_profile()
-    return render_to_response('feed.html', {'facebook_profile': facebook_profile})
-   
+class HighlightFeed(ListView):
+  context_object_name = 'highlights'
+  queryset = Highlight.objects.all()
+  template_name = 'feed.html'
+
 
 class CreateHighlight(View):
   """Class-based view for handling the create highlight process."""

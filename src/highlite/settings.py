@@ -60,7 +60,7 @@ USE_I18N = False
 
 # If you set this to False, Django will not format dates, numbers and
 # calendars according to the current locale.
-USE_L10N = False 
+USE_L10N = False
 
 # If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True
@@ -103,8 +103,8 @@ STATICFILES_FINDERS = (
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'ox-ou49n06puy8nq_&%=&y87cxi9t#+&th3=2mbaccw!hkz#d='
 
-FACEBOOK_APP_ID = '194793243978205' 
-FACEBOOK_APP_SECRET = 'a92584eaa7be0d36ba2b2dc37e307e27' 
+FACEBOOK_APP_ID = '194793243978205'
+FACEBOOK_APP_SECRET = 'a92584eaa7be0d36ba2b2dc37e307e27'
 FACEBOOK_SCOPE = 'email,read_friendlists,read_stream'
 LOGIN_REDIRECT_URL = '/lite/feed'
 AUTH_PROFILE_MODULE = 'facebook.FacebookProfile'
@@ -152,7 +152,7 @@ INSTALLED_APPS = (
     'highlite.highlighter',
     'highlite.facebook',
     'highlite.foursquare_auth',
-    'south',
+    #'south',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
