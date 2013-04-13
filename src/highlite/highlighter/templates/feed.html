@@ -1,6 +1,6 @@
 {% extends "base.html" %}
+
  {% block content %}
-  {{ facebook_profile|pprint }}
   <ul>
     {% for highlight in highlights %}
       <li> {{ highlight.highlight_text }}</li>

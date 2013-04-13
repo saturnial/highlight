@@ -28,6 +28,11 @@ class HighlightFeed(ListView):
   queryset = Highlight.objects.all()
   template_name = 'feed.html'
 
+  def get_context_data(self, **kwargs):
+    context = super(HighlightFeed, self).get_context_data(**kwargs)
+    facebook_profile = self.request.user.get_profile().get_facebook_profile()
+    context['facebook_profile'] = facebook_profile
+    return context
 
 class CreateHighlight(View):
   """Class-based view for handling the create highlight process."""
