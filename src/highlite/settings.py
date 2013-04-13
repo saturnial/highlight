@@ -105,7 +105,7 @@ SECRET_KEY = 'ox-ou49n06puy8nq_&%=&y87cxi9t#+&th3=2mbaccw!hkz#d='
 
 FACEBOOK_APP_ID = '194793243978205' 
 FACEBOOK_APP_SECRET = 'a92584eaa7be0d36ba2b2dc37e307e27' 
-FACEBOOK_SCOPE = 'email,publish_stream'
+FACEBOOK_SCOPE = 'email,read_friendlists,read_stream'
 LOGIN_REDIRECT_URL = '/lite/feed'
 AUTH_PROFILE_MODULE = 'facebook.FacebookProfile'
 
