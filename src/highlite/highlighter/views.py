@@ -2,6 +2,8 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 
 import forms
+import foursquare
+import logging
 
 def index(request):
   return render_to_response('index.html', {})
@@ -17,6 +19,13 @@ def create(request):
       return HttpResponseRedirect('/thanks/')
   else:
     form = forms.CreateHighlight()
+    #fsq_auth_token = request.session.get('fsq_access_token')
+    #logging.info(fsq_auth_token)
+    #fsq_client = foursquare.Foursquare(access_token=fsq_auth_token) 
+      
+    #coffee_places = fsq_client.venues.search(params={'query': 'coffee',
+    #                                                 'near': 'San Francisco, CA'})
   return render_to_response(request, 'create.html', {
       'form': form,
+      #'coffee_search': coffee_places
   })
