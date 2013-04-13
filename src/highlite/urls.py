@@ -9,8 +9,8 @@ urlpatterns = patterns('',
      url(r'lite/', include('highlite.highlighter.urls')),
     url(r'^facebook/login', 'highlite.facebook.views.login'),
     url(r'^facebook/authentication_callback$', 'highlite.facebook.views.authentication_callback'),
+    (r'^foursq_auth/', include('highlite.foursquare_auth.urls')),
     url(r'^logout$', 'django.contrib.auth.views.logout'),
-
     url(r'^admin/', include(admin.site.urls)),
 
     # Uncomment the admin/doc line below to enable admin documentation:
