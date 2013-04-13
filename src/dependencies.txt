@@ -1,3 +1,7 @@
 Django==1.5.1
 South==0.7.6
+foursquare==20130402
+httplib2==0.8
+poster==0.8.1
+pyfacebook==1.0a2
 wsgiref==0.1.2
