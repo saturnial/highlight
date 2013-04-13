@@ -1,13 +1,16 @@
 from django.db import models
 
-class Entry(models.Model):
-  user = models.CharField(max_length=50)
-  day = models.DateField(auto_now_add=True)
+class User(models.Model):
+  username = models.CharField(max_length=25)
+  first_name = models.CharField(max_length=30)
+  last_name = models.CharField(max_length=30)
+  email = models.EmailField()
 
   def __unicode__(self):
-    return u"%s's response on %s" % (self.user, self.day)
+    return u"%s %s" % (self.first_name, self.last_name)
 
 class Highlight(models.Model):
-  entry = models.ForeignKey(Entry)
-  text = models.TextField()
-  score = models.IntegerField()
+  user = models.ForeignKey(User)
+  highlight_text = models.CharField(max_length=30)
+  timestamp = models.DateTimeField(auto_now_add=True)
+
