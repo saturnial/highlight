@@ -10,8 +10,16 @@ import forms
 import foursquare
 import logging
 
-def index(request):
-  return render_to_response('index.html', {})
+class Index(View):
+  """Class-based view for handling the initial login."""
+
+  def get(self, request):
+    logged_in = request.user.is_authenticated()
+    if logged_in:
+      return HttpResponseRedirect('/lite/create')
+
+    return render_to_response('index.html',
+                              {})
 
 class HighlightFeed(ListView):
   """Class-based generic view listing out all highlights."""
@@ -25,9 +33,11 @@ class CreateHighlight(View):
   """Class-based view for handling the create highlight process."""
 
   def get(self, request):
+    facebook_profile = request.user.get_profile().get_facebook_profile()
     form = forms.CreateHighlight()
     return render_to_response('create.html',
-                              {'form': form},
+                              {'form': form,
+                               'facebook_profile': facebook_profile},
                               context_instance=RequestContext(request))
 
   def post(self, request):
