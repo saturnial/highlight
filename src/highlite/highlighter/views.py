@@ -15,8 +15,8 @@ def create(request):
     form = forms.CreateHighlight(request.POST)
     if form.is_valid():
       return HttpResponseRedirect('/thanks/')
-    else:
-      form = forms.CreateHighlight()
-    return render_to_response(request, 'create.html', {
-        'form': form,
-    })
+  else:
+    form = forms.CreateHighlight()
+  return render_to_response(request, 'create.html', {
+      'form': form,
+  })
