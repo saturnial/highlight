@@ -6,8 +6,8 @@ def index(request):
 
 def feed(request):
   facebook_profile = request.user.get_profile().get_facebook_profile() 
-  return render_to_response('feed.html', {})
-
+  return render_to_response('feed.html', {'facebook_profile': facebook_profile})
 
 def create(request):
   return render_to_response('create.html', {})
+
