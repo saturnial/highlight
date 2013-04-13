@@ -29,11 +29,10 @@
      <div class="container-narrow">
         <div class="masthead">
         <ul class="nav nav-pills pull-right">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
           {% if facebook_profile %}
-          <li><a href="{{ facebook_profile.link }}">{{ facebook_profile.name }}</a></li>
+          <li><a href="/lite/create">Create</a></li>
+          <li><a href="/lite/feed">Experience</a></li>
+          <li><a target="_blank" href="{{ facebook_profile.link }}">{{ facebook_profile.name }}</a></li>
           <li><img src="http://graph.facebook.com/{{facebook_profile.id }}/picture?type=small"/></li>
           {% endif %}
         </ul>
@@ -43,10 +42,6 @@
   {%  block content %}{% endblock %}
 
       <hr>
-
-      <div class="footer">
-        <p>&copy; Highlite 2013</p>
-      </div>
 
     </div> <!-- /container -->
 
