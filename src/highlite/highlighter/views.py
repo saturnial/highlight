@@ -15,17 +15,24 @@ class Index(View):
 
   def get(self, request):
     logged_in = request.user.is_authenticated()
-    if logged_in: 
+    if logged_in:
       return HttpResponseRedirect('/lite/create')
 
     return render_to_response('index.html',
                               {})
 
 class HighlightFeed(ListView):
+  """Class-based generic view listing out all highlights."""
+
   context_object_name = 'highlights'
   queryset = Highlight.objects.all()
   template_name = 'feed.html'
 
+  def get_context_data(self, **kwargs):
+    context = super(HighlightFeed, self).get_context_data(**kwargs)
+    facebook_profile = self.request.user.get_profile().get_facebook_profile()
+    context['facebook_profile'] = facebook_profile
+    return context
 
 class CreateHighlight(View):
   """Class-based view for handling the create highlight process."""
