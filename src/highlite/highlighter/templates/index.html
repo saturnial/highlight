@@ -8,7 +8,7 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
-    <link href="static/third_party/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/third_party/bootstrap/css/bootstrap.css" rel="stylesheet">
     <style type="text/css">
       body {
         padding-top: 20px;
@@ -80,36 +80,22 @@
         border-radius: 0 3px 3px 0;
       }
     </style>
-    <link href="static/third_party/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/static/third_party/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
-      <script src="static/third_party/bootstrap/js/html5shiv.js"></script>
+      <script src="/static/third_party/bootstrap/js/html5shiv.js"></script>
     <![endif]-->
 
     <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="static/third_party/bootstrap/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="static/third_party/bootstrap/ico/apple-touch-icon-114-precomposed.png">
-      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="static/third_party/bootstrap/ico/apple-touch-icon-72-precomposed.png">
-                    <link rel="apple-touch-icon-precomposed" href="static/third_party/bootstrap/ico/apple-touch-icon-57-precomposed.png">
-                                   <link rel="shortcut icon" href="static/third_party/bootstrap/ico/favicon.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/third_party/bootstrap/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/third_party/bootstrap/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/third_party/bootstrap/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="/static/third_party/bootstrap/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="/static/third_party/bootstrap/ico/favicon.png">
   </head>
 
   <body>
-
- {{ facebook_profile|pprint }}
-  {% if user.is_authenticated %}
-        <h2>You are logged in as: {{ user }}</h2>
-        <a href="/logout">Logout</a>
-        <hr />
-        <h2>User info</h2>
-        <img src="http://graph.facebook.com/{{ user.get_profile.facebook_id }}/picture" /><br />
-        <pre>{{ facebook_profile|pprint }}</pre>
-        {% else %}
-        <a href="/facebook/login">Login via Facebook</a>
-        {% endif %}
-        <hr />
-        <a href="/admin">Admin</a>
 
     <div class="container">
 
@@ -142,9 +128,9 @@
       <div class="jumbotron">
         <h2>Capture the best of your life.</h2>
         <p class="lead">Social media has changed the way we share everything. With Highlite, you don't share anything, you share everything that matters.</p>
-        <a class="btn btn-large btn-success" href="#">Get started today</a>
-      </div>
+        <a class="btn btn-large btn-success" href="/facebook/login/">Get started today &nbsp;<img src="/static/third_party/images/facebook_32.png"/></a></div>
 
+    </div>
       <hr>
 
       <!-- Example row of columns -->
@@ -177,19 +163,22 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="static/third_party/bootstrap/js/jquery.js"></script>
-    <script src="static/third_party/bootstrap/js/bootstrap-transition.js"></script>
-    <script src="static/third_party/bootstrap/js/bootstrap-alert.js"></script>
-    <script src="static/third_party/bootstrap/js/bootstrap-modal.js"></script>
-    <script src="static/third_party/bootstrap/js/bootstrap-dropdown.js"></script>
-    <script src="static/third_party/bootstrap/js/bootstrap-scrollspy.js"></script>
-    <script src="static/third_party/bootstrap/js/bootstrap-tab.js"></script>
-    <script src="static/third_party/bootstrap/js/bootstrap-tooltip.js"></script>
-    <script src="static/third_party/bootstrap/js/bootstrap-popover.js"></script>
-    <script src="static/third_party/bootstrap/js/bootstrap-button.js"></script>
-    <script src="static/third_party/bootstrap/js/bootstrap-collapse.js"></script>
-    <script src="static/third_party/bootstrap/js/bootstrap-carousel.js"></script>
-    <script src="static/third_party/bootstrap/js/bootstrap-typeahead.js"></script>
+    <script src="/static/third_party/bootstrap/js/jquery.js"></script>
+    <script src="/static/third_party/bootstrap/js/bootstrap-transition.js"></script>
+    <script src="/static/third_party/bootstrap/js/bootstrap-alert.js"></script>
+    <script src="/static/third_party/bootstrap/js/bootstrap-modal.js"></script>
+    <script src="/static/third_party/bootstrap/js/bootstrap-dropdown.js"></script>
+    <script src="/static/third_party/bootstrap/js/bootstrap-scrollspy.js"></script>
+    <script src="/static/third_party/bootstrap/js/bootstrap-tab.js"></script>
+    <script src="/static/third_party/bootstrap/js/bootstrap-tooltip.js"></script>
+    <script src="/static/third_party/bootstrap/js/bootstrap-popover.js"></script>
+    <script src="/static/third_party/bootstrap/js/bootstrap-button.js"></script>
+    <script src="/static/third_party/bootstrap/js/bootstrap-collapse.js"></script>
+    <script src="/static/third_party/bootstrap/js/bootstrap-carousel.js"></script>
+    <script src="/static/third_party/bootstrap/js/bootstrap-typeahead.js"></script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
 
   </body>
 </html>
