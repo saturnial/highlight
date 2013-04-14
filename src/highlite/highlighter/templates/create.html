@@ -1,13 +1,22 @@
 {% extends "base.html" %}
 
-{% block title %} Create your highlight! {% endblock %}
+{% block title %}
+  Create your highlights!
+{% endblock %}
 
 {% block content %}
-
+<center>
 <form action="/lite/create" method="post">
   {% csrf_token %}
-  {{ form.as_p }}
+  {{ form.as_table }}
   <input type="submit" value="Submit" />
 </form>
+
+<ol>
+  <li>{{ recent_highlight.user }}</li>
+  <li>{{ recent_highlight.timestamp }}</li>
+  <li><a href="/lite/highlight/{{ recent_highlight.id }}">{{ recent_highlight.highlight_text }}</a></li>
+</ol>
+</center>
 
 {% endblock %}

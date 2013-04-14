@@ -4,7 +4,6 @@ from django.views.generic.base import View
 from django.views.generic.list import ListView
 from django.views.generic import DetailView
 from django.template import RequestContext
-from django.contrib.auth.models import User
 
 from models import Highlight
 import forms
@@ -40,25 +39,35 @@ class HighlightDetailView(DetailView):
   queryset = Highlight.objects.all()
   template_name = "highlight_detail.html"
 
-
 class CreateHighlight(View):
   """Class-based view for handling the create highlight process."""
 
   def get(self, request):
+    recent_highlight = Highlight.objects.filter(user=request.user).latest()
     facebook_profile = request.user.get_profile().get_facebook_profile()
     form = forms.CreateHighlight()
     return render_to_response('create.html',
                               {'form': form,
-                               'facebook_profile': facebook_profile},
+                               'facebook_profile': facebook_profile,
+                               'recent_highlight': recent_highlight},
                               context_instance=RequestContext(request))
 
   def post(self, request):
     form = forms.CreateHighlight(request.POST)
     if form.is_valid():
-      new_highlight = form.save()
+      new_highlight = form.save(commit=False)
+      new_highlight.user = request.user
+      new_highlight.save()
       return HttpResponseRedirect('/lite/create')
     else:
-      return render_to_response('create.html', {'form': form})
+      recent_highlight = Highlight.objects.filter(user=request.user).latest()
+      facebook_profile = request.user.get_profile().get_facebook_profile()
+      return render_to_response('create.html',
+                                {'form': form,
+                                 'facebook_profile': facebook_profile,
+                                 'recent_highlight': recent_highlight},
+                                context_instance=RequestContext(request))
+
 
     #fsq_auth_token = request.session.get('fsq_access_token')
     #logging.info(fsq_auth_token)
@@ -66,4 +75,4 @@ class CreateHighlight(View):
 
     #coffee_places = fsq_client.venues.search(params={'query': 'coffee',
     #                                                 'near': 'San Francisco, CA'})
-      #'coffee_search': coffee_places
+    #'coffee_search': coffee_places

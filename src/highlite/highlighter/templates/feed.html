@@ -1,17 +1,18 @@
 {% extends "base.html" %}
- {% block additional_imports %} 
-<script type="text/javascript" src="/static/js/main.js"></script>
 
- {% endblock %}  
- {% block content %}
+{% block additional_imports %}
+<script type="text/javascript" src="/static/js/main.js"></script>
+{% endblock %}
+
+{% block content %}
 <div class="droppable" id="receiveHighlight">
 Make your friend's highlights your.
 </div>
  <div id="feed">
-    {% for highlight in highlights %}
-      <div class="draggable highlight" id="{{ highlight.id}}">{{ highlight.highlight_text }}
-       <a href="/lite/highlight/{{ highlight.id }}">{{ highlight.highlight_text }}</a></div>
-    {% endfor %}
+  {% for highlight in highlights %}
+    <div class="draggable highlight" id="{{ highlight.id}}">{{ highlight.highlight_text }}
+     <a href="/lite/highlight/{{ highlight.id }}">{{ highlight.highlight_text }}</a></div>
+  {% endfor %}
  </div>
 
 {% endblock %}
