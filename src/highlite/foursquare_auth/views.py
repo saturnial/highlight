@@ -12,7 +12,7 @@ CLIENT_SECRET = 'XXJJKVEB1QQLJSFFAU53KB1O3JBBFQ503BBMV5L5BA5XXFGN'
 
 request_token_url = 'https://foursquare.com/oauth2/authenticate'
 access_token_url = 'https://foursquare.com/oauth2/access_token'
-redirect_url = 'http://127.0.0.1:8000/foursq_auth/callback'
+redirect_url = 'http://localhost:8000/foursq_auth/callback'
 
 def callback( request ):
     # get the code returned from foursquare
@@ -24,12 +24,12 @@ def callback( request ):
                'grant_type' : 'authorization_code',
                'redirect_uri' : redirect_url,
                'code' : code}
-    data = urllib.urlencode( params )
-    req = urllib2.Request( access_token_url, data )
+    data = urllib.urlencode(params)
+    req = urllib2.Request(access_token_url, data)
 
     # request the access_token
-    response = urllib2.urlopen( req )
-    access_token = json.loads( response.read( ) )
+    response = urllib2.urlopen(req)
+    access_token = json.loads(response.read( ))
     access_token = access_token['access_token']
 
     # store the access_token for later use

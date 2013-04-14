@@ -5,6 +5,9 @@
 {% endblock %}
 
 {% block content %}
+
+{{ query_results }}
+
 <center>
 <form action="/lite/create" method="post">
   {% csrf_token %}

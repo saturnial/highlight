@@ -52,8 +52,15 @@ class CreateHighlight(View):
       most_recent_highlight = None
     facebook_profile = request.user.get_profile()
     form = forms.CreateHighlight()
+    fsq_auth_token = request.session.get('fsq_access_token')
+    if not fsq_auth_token:
+      return HttpResponseRedirect('/foursq_auth/auth')
+    fsq_client = foursquare.Foursquare(access_token=fsq_auth_token)
+    query_results = fsq_client.venues.search(params={'query': 'bar',
+                                                     'near': 'San Francisco, CA'})
     return render_to_response('create.html',
                               {'form': form,
+                               'query_results': query_results},
                                'facebook_profile': facebook_profile,
                                'recent_highlight': most_recent_highlight},
                               context_instance=RequestContext(request))
@@ -66,6 +73,7 @@ class CreateHighlight(View):
       new_highlight.save()
       return HttpResponseRedirect('/lite/create')
     else:
+      return render_to_response('create.html', {'form': form})
       recent_highlight = Highlight.objects.filter(user=request.user).latest()
       facebook_profile = request.user.get_profile()
       return render_to_response('create.html',
@@ -73,12 +81,3 @@ class CreateHighlight(View):
                                  'facebook_profile': facebook_profile,
                                  'recent_highlight': recent_highlight},
                                 context_instance=RequestContext(request))
-
-
-    #fsq_auth_token = request.session.get('fsq_access_token')
-    #logging.info(fsq_auth_token)
-    #fsq_client = foursquare.Foursquare(access_token=fsq_auth_token)
-
-    #coffee_places = fsq_client.venues.search(params={'query': 'coffee',
-    #                                                 'near': 'San Francisco, CA'})
-    #'coffee_search': coffee_places
