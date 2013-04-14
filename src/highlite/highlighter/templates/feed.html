@@ -4,14 +4,17 @@
 <script type="text/javascript" src="/static/js/main.js"></script>
 {% endblock %}
 
- {% block content %}
+{% block content %}
+
 <div class="droppable" id="receiveHighlight">
 Make your friend's highlights your own.
 </div>
- <div id="feed">
-  {% for highlight in highlights %}
-    <div class="draggable highlight" id="{{ highlight.id}}">{{ highlight.highlight_text }}
-     <a href="/lite/highlight/{{ highlight.id }}">{{ highlight.highlight_text }}</a></div>
-  {% endfor %}
+
+<div id="feed">
+{% for highlight in highlights %}
+  <div class="draggable highlight" id="{{ highlight.id}}">
+   <a href="/lite/highlight/{{ highlight.id }}">{{ highlight.highlight_text }}</a>
  </div>
+{% endfor %}
+</div>
 {% endblock %}

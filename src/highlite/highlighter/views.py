@@ -23,13 +23,14 @@ class HighlightFeed(ListView):
   """Class-based generic view listing out all highlights."""
 
   context_object_name = 'highlights'
-  queryset = Highlight.objects.all()
   template_name = 'feed.html'
+
+  def get_queryset(self):
+    return Highlight.objects.filter(user=self.request.user)
 
   def get_context_data(self, **kwargs):
     context = super(HighlightFeed, self).get_context_data(**kwargs)
     facebook_profile = self.request.user.get_profile()
-    print facebook_profile
     context['facebook_profile'] = facebook_profile
     return context
 
@@ -44,13 +45,17 @@ class CreateHighlight(View):
   """Class-based view for handling the create highlight process."""
 
   def get(self, request):
-    recent_highlight = Highlight.objects.filter(user=request.user).latest()
+    highlights = Highlight.objects.filter(user=request.user)
+    if highlights:
+      most_recent_highlight = highlights.latest()
+    else:
+      most_recent_highlight = None
     facebook_profile = request.user.get_profile()
     form = forms.CreateHighlight()
     return render_to_response('create.html',
                               {'form': form,
                                'facebook_profile': facebook_profile,
-                               'recent_highlight': recent_highlight},
+                               'recent_highlight': most_recent_highlight},
                               context_instance=RequestContext(request))
 
   def post(self, request):
