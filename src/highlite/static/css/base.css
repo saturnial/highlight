@@ -86,3 +86,25 @@ max-width: 700px;
 .container-narrow > hr {
 margin: 30px 0;
 }
+
+#receiveHighlight { 
+float: right; 
+width: 300px;
+height: 300px;
+position:absolute;
+top: 8em;
+left:5em;
+padding-top: 5em;
+}
+
+.highlight { width: 30em; height: 20em; background: #DCDCDC; margin:3em}
+
+
+#feed {
+postion: absolute;
+padding-bottom: 50px;
+padding-left: 25em;
+
+
+}
+
