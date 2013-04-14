@@ -1,7 +1,8 @@
 Django==1.5.1
+Pillow==2.0.0
 South==0.7.6
+django-facebook==5.0.12
 foursquare==20130402
 httplib2==0.8
 poster==0.8.1
-pyfacebook==1.0a2
 wsgiref==0.1.2

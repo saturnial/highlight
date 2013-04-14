@@ -28,7 +28,8 @@ class HighlightFeed(ListView):
 
   def get_context_data(self, **kwargs):
     context = super(HighlightFeed, self).get_context_data(**kwargs)
-    facebook_profile = self.request.user.get_profile().get_facebook_profile()
+    facebook_profile = self.request.user.get_profile()
+    print facebook_profile
     context['facebook_profile'] = facebook_profile
     return context
 
@@ -44,7 +45,7 @@ class CreateHighlight(View):
 
   def get(self, request):
     recent_highlight = Highlight.objects.filter(user=request.user).latest()
-    facebook_profile = request.user.get_profile().get_facebook_profile()
+    facebook_profile = request.user.get_profile()
     form = forms.CreateHighlight()
     return render_to_response('create.html',
                               {'form': form,
@@ -61,7 +62,7 @@ class CreateHighlight(View):
       return HttpResponseRedirect('/lite/create')
     else:
       recent_highlight = Highlight.objects.filter(user=request.user).latest()
-      facebook_profile = request.user.get_profile().get_facebook_profile()
+      facebook_profile = request.user.get_profile()
       return render_to_response('create.html',
                                 {'form': form,
                                  'facebook_profile': facebook_profile,

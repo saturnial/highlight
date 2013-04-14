@@ -4,9 +4,9 @@
 <script type="text/javascript" src="/static/js/main.js"></script>
 {% endblock %}
 
-{% block content %}
+ {% block content %}
 <div class="droppable" id="receiveHighlight">
-Make your friend's highlights your.
+Make your friend's highlights your own.
 </div>
  <div id="feed">
   {% for highlight in highlights %}
@@ -14,5 +14,4 @@ Make your friend's highlights your.
      <a href="/lite/highlight/{{ highlight.id }}">{{ highlight.highlight_text }}</a></div>
   {% endfor %}
  </div>
-
 {% endblock %}

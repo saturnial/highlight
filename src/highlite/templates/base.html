@@ -36,8 +36,8 @@
           {% if facebook_profile %}
           <li><a href="/lite/create">Create</a></li>
           <li><a href="/lite/feed">Feed</a></li>
-          <li><a target="_blank" href="{{ facebook_profile.link }}">{{ facebook_profile.name }}</a></li>
-          <li><img src="http://graph.facebook.com/{{facebook_profile.id }}/picture?type=small"/></li>
+          <li><a target="_blank" href="{{ facebook_profile.facebook_profile_url }}">{{ facebook_profile.facebook_name }}</a></li>
+          <li><img src="http://graph.facebook.com/{{facebook_profile.facebook_id }}/picture?type=small"/></li>
           {% endif %}
         </ul>
         <h2 class="masthead">Highlite</h2>
@@ -48,22 +48,5 @@
       <hr>
 
     </div> <!-- /container -->
-
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/static/third_party/bootstrap/js/jquery.js"></script>
-    <script src="/static/third_party/bootstrap/js/bootstrap-transition.js"></script>
-    <script src="/static/third_party/bootstrap/js/bootstrap-alert.js"></script>
-    <script src="/static/third_party/bootstrap/js/bootstrap-modal.js"></script>
-    <script src="/static/third_party/bootstrap/js/bootstrap-dropdown.js"></script>
-    <script src="/static/third_party/bootstrap/js/bootstrap-scrollspy.js"></script>
-    <script src="/static/third_party/bootstrap/js/bootstrap-tab.js"></script>
-    <script src="/static/third_party/bootstrap/js/bootstrap-tooltip.js"></script>
-    <script src="/static/third_party/bootstrap/js/bootstrap-popover.js"></script>
-    <script src="/static/third_party/bootstrap/js/bootstrap-button.js"></script>
-    <script src="/static/third_party/bootstrap/js/bootstrap-collapse.js"></script>
-    <script src="/static/third_party/bootstrap/js/bootstrap-carousel.js"></script>
-    <script src="/static/third_party/bootstrap/js/bootstrap-typeahead.js"></script>
   </body>
 </html>

@@ -5,7 +5,16 @@ function init() {
     drop: handleDropEvent
   } );
 }
+
 function handleDropEvent( event, ui ) {
+  var highlights = $('#receiveHighlight');
   var draggable = ui.draggable;
-  alert( 'The square with ID "' + draggable.attr('id') + '" was dropped onto me!' );
+  var id = draggable.attr('id');
+  var block = $('#' + id)
+  var text = block.html()
+  highlights.append('<br/>' + text);
+  block.hide();
+
 }
+
+
