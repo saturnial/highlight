@@ -3,7 +3,7 @@
  {% block content %}
   <ul>
     {% for highlight in highlights %}
-      <li> {{ highlight.highlight_text }}</li>
+      <li><a href="/lite/highlight/{{ highlight.id }}">{{ highlight.highlight_text }}</a></li>
     {% endfor %}
   </ul>
 {% endblock %}

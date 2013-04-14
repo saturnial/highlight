@@ -6,3 +6,8 @@ class Highlight(models.Model):
   highlight_text = models.CharField(max_length=30)
   timestamp = models.DateTimeField(auto_now_add=True)
 
+  class Meta:
+    ordering = ["-timestamp"]
+
+  def __unicode__(self):
+    return self.highlight_text
