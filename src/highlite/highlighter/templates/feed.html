@@ -1,9 +1,14 @@
 {% extends "base.html" %}
-
+ {% block additional_imports %} 
+<script type="text/javascript" src="/static/js/main.js"></script>
+ {% endblock %}  
  {% block content %}
   <ul>
     {% for highlight in highlights %}
       <li> {{ highlight.highlight_text }}</li>
     {% endfor %}
   </ul>
+<div id="makeMeDraggable"> </div>
+<div id="makeMeDroppable"> </div>
+
 {% endblock %}
