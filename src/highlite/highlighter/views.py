@@ -29,9 +29,8 @@ class HighlightFeed(ListView):
 
   def get_context_data(self, **kwargs):
     context = super(HighlightFeed, self).get_context_data(**kwargs)
-    facebook_profile = self.request.user.get_profile()
-    print facebook_profile
-    context['facebook_profile'] = facebook_profile
+    profile = self.request.user.get_profile()
+    context['facebook_profile'] = profile
     return context
 
 class HighlightDetailView(DetailView):
@@ -46,11 +45,19 @@ class CreateHighlight(View):
   """Class-based view for handling the create highlight process."""
 
   def get(self, request):
-    facebook_profile = request.user.get_profile()
+    profile = request.user.get_profile()
     form = forms.CreateHighlight()
+
+    fsq_auth_token = request.session.get('fsq_access_token')
+    if not fsq_auth_token:
+      return HttpResponseRedirect('/foursq_auth/auth')
+    fsq_client = foursquare.Foursquare(access_token=fsq_auth_token)
+    query_results = fsq_client.venues.search(params={'query': 'bar',
+                                                     'near': 'San Francisco, CA'})
     return render_to_response('create.html',
                               {'form': form,
-                               'facebook_profile': facebook_profile},
+                               'facebook_profile': profile,
+                               'query_results': query_results},
                               context_instance=RequestContext(request))
 
   def post(self, request):
@@ -60,11 +67,3 @@ class CreateHighlight(View):
       return HttpResponseRedirect('/lite/create')
     else:
       return render_to_response('create.html', {'form': form})
-
-    #fsq_auth_token = request.session.get('fsq_access_token')
-    #logging.info(fsq_auth_token)
-    #fsq_client = foursquare.Foursquare(access_token=fsq_auth_token)
-
-    #coffee_places = fsq_client.venues.search(params={'query': 'coffee',
-    #                                                 'near': 'San Francisco, CA'})
-      #'coffee_search': coffee_places

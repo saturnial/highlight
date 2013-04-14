@@ -4,6 +4,8 @@
 
 {% block content %}
 
+{{ query_results }}
+
 <form action="/lite/create" method="post">
   {% csrf_token %}
   {{ form.as_p }}
