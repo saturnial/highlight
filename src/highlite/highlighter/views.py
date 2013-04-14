@@ -2,6 +2,7 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 from django.views.generic.base import View
 from django.views.generic.list import ListView
+from django.views.generic import DetailView
 from django.template import RequestContext
 from django.contrib.auth.models import User
 
@@ -17,9 +18,7 @@ class Index(View):
     logged_in = request.user.is_authenticated()
     if logged_in:
       return HttpResponseRedirect('/lite/create')
-
-    return render_to_response('index.html',
-                              {})
+    return render_to_response('index.html', {})
 
 class HighlightFeed(ListView):
   """Class-based generic view listing out all highlights."""
@@ -33,6 +32,14 @@ class HighlightFeed(ListView):
     facebook_profile = self.request.user.get_profile().get_facebook_profile()
     context['facebook_profile'] = facebook_profile
     return context
+
+class HighlightDetailView(DetailView):
+  """Class-based generic view detailing an individual highlight."""
+
+  context_object_name = 'highlight'
+  queryset = Highlight.objects.all()
+  template_name = "highlight_detail.html"
+
 
 class CreateHighlight(View):
   """Class-based view for handling the create highlight process."""
