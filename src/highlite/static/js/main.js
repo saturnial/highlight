@@ -1,7 +1,7 @@
 $( init );
 function init() {
-  $('#makeMeDraggable').draggable();
-  $('#makeMeDroppable').droppable( {
+  $('.draggable').draggable();
+  $('.droppable').droppable( {
     drop: handleDropEvent
   } );
 }
