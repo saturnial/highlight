@@ -12,12 +12,9 @@ ADMINS = (
 )
 
 AUTHENTICATION_BACKENDS = (
-    'highlite.facebook.backend.FacebookBackend',
+    'django_facebook.auth_backends.FacebookBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
-
-
-
 
 MANAGERS = ADMINS
 
@@ -106,8 +103,8 @@ SECRET_KEY = 'ox-ou49n06puy8nq_&%=&y87cxi9t#+&th3=2mbaccw!hkz#d='
 FACEBOOK_APP_ID = '194793243978205'
 FACEBOOK_APP_SECRET = 'a92584eaa7be0d36ba2b2dc37e307e27'
 FACEBOOK_SCOPE = 'email,read_friendlists,read_stream'
-LOGIN_REDIRECT_URL = '/lite/feed'
-AUTH_PROFILE_MODULE = 'facebook.FacebookProfile'
+FACEBOOK_LOGIN_DEFAULT_REDIRECT = '/lite/feed'
+AUTH_PROFILE_MODULE = 'django_facebook.FacebookProfile'
 
 
 
@@ -118,6 +115,19 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.Loader',
 #     'django.template.loaders.eggs.Loader',
 )
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+"django.contrib.auth.context_processors.auth",
+"django.core.context_processors.debug",
+"django.core.context_processors.i18n",
+"django.core.context_processors.media",
+"django.core.context_processors.static",
+"django.core.context_processors.tz",
+"django.contrib.messages.context_processors.messages",
+'django_facebook.context_processors.facebook',
+)
+
+
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
@@ -150,8 +160,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'highlite.highlighter',
-    'highlite.facebook',
     'highlite.foursquare_auth',
+     'django_facebook',
     #'south',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',

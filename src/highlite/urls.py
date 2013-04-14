@@ -6,10 +6,9 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', RedirectView.as_view(url='lite/')), 
-     url(r'lite/', include('highlite.highlighter.urls')),
-    url(r'^facebook/login', 'highlite.facebook.views.login'),
-    url(r'^facebook/authentication_callback$', 'highlite.facebook.views.authentication_callback'),
-    (r'^foursq_auth/', include('highlite.foursquare_auth.urls')),
+    url(r'lite/', include('highlite.highlighter.urls')),
+    url(r'^facebook/', include('django_facebook.urls')),
+    url(r'^foursq_auth/', include('highlite.foursquare_auth.urls')),
     url(r'^logout$', 'django.contrib.auth.views.logout'),
     url(r'^admin/', include(admin.site.urls)),
 

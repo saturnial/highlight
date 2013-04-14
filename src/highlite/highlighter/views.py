@@ -29,7 +29,8 @@ class HighlightFeed(ListView):
 
   def get_context_data(self, **kwargs):
     context = super(HighlightFeed, self).get_context_data(**kwargs)
-    facebook_profile = self.request.user.get_profile().get_facebook_profile()
+    facebook_profile = self.request.user.get_profile()
+    print facebook_profile
     context['facebook_profile'] = facebook_profile
     return context
 
@@ -45,7 +46,7 @@ class CreateHighlight(View):
   """Class-based view for handling the create highlight process."""
 
   def get(self, request):
-    facebook_profile = request.user.get_profile().get_facebook_profile()
+    facebook_profile = request.user.get_profile()
     form = forms.CreateHighlight()
     return render_to_response('create.html',
                               {'form': form,

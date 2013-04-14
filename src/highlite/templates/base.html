@@ -36,8 +36,8 @@
           {% if facebook_profile %}
           <li><a href="/lite/create">Create</a></li>
           <li><a href="/lite/feed">Feed</a></li>
-          <li><a target="_blank" href="{{ facebook_profile.link }}">{{ facebook_profile.name }}</a></li>
-          <li><img src="http://graph.facebook.com/{{facebook_profile.id }}/picture?type=small"/></li>
+          <li><a target="_blank" href="{{ facebook_profile.facebook_profile_url }}">{{ facebook_profile.facebook_name }}</a></li>
+          <li><img src="http://graph.facebook.com/{{facebook_profile.facebook_id }}/picture?type=small"/></li>
           {% endif %}
         </ul>
         <h2 class="masthead">Highlite</h2>
