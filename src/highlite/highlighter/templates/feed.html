@@ -9,7 +9,8 @@ Make your friend's highlights your.
 </div>
  <div id="feed">
     {% for highlight in highlights %}
-      <div class="draggable highlight" id="{{ highlight.id}}">{{ highlight.highlight_text }}</div>
+      <div class="draggable highlight" id="{{ highlight.id}}">{{ highlight.highlight_text }}
+       <a href="/lite/highlight/{{ highlight.id }}">{{ highlight.highlight_text }}</a></div>
     {% endfor %}
  </div>
 
