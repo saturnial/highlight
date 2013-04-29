@@ -41,13 +41,24 @@ class HighlightDetailView(DetailView):
   queryset = Highlight.objects.all()
   template_name = "highlight_detail.html"
 
+def get_possible_venues(request, query):
+  fsq_auth_token = request.session.get('fsq_access_token')
+  fsq_client = foursquare.Foursquare(access_token=fsq_auth_token)
+  query_results = fsq_client.venues.search(params={'query': query,
+                                                   'near': 'San Francisco, CA',
+                                                   'limit': 5})
+  print query_results
+  response = []
+  for venue in query_results:
+    response.append(venue['response']['checkins']['items']['venue']['name'])
+  return json.dumps(response)
+
 class CreateHighlight(View):
   """Class-based view for handling the create highlight process."""
 
   def get(self, request):
-    highlights = Highlight.objects.filter(user=request.user)
-    if highlights:
-      most_recent_highlight = highlights.latest()
+    if Highlight.objects.filter(user=request.user).exists():
+      most_recent_highlight = Highlight.objects.latest()
     else:
       most_recent_highlight = None
     facebook_profile = request.user.get_profile()
@@ -55,12 +66,8 @@ class CreateHighlight(View):
     fsq_auth_token = request.session.get('fsq_access_token')
     if not fsq_auth_token:
       return HttpResponseRedirect('/foursq_auth/auth')
-    fsq_client = foursquare.Foursquare(access_token=fsq_auth_token)
-    query_results = fsq_client.venues.search(params={'query': 'bar',
-                                                     'near': 'San Francisco, CA'})
     return render_to_response('create.html',
                               {'form': form,
-                               'query_results': query_results},
                                'facebook_profile': facebook_profile,
                                'recent_highlight': most_recent_highlight},
                               context_instance=RequestContext(request))

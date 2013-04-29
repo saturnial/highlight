@@ -1,17 +1,30 @@
 {% extends "base.html" %}
 
+{% block additional_imports %}
+<script type="text/javascript" src="/static/js/main.js"></script>
+{% endblock %}
+
 {% block title %}
   Create your highlights!
 {% endblock %}
 
 {% block content %}
 
-{{ query_results }}
+{{ query_results|pprint }}
 
 <center>
 <form action="/lite/create" method="post">
-  {% csrf_token %}
-  {{ form.as_table }}
+{% csrf_token %}
+<table>
+  <tr>
+    <td>Describe your highlight</td>
+    <td>{{ form.highlight_text }}</td>
+  </tr>
+  <tr>
+    <td>Geotag your highlight</td>
+    <td><input id="possible_venues" type="text" name="venue"></td>
+  </tr>
+</table>
   <input type="submit" value="Submit" />
 </form>
 

@@ -17,4 +17,20 @@ function handleDropEvent( event, ui ) {
 
 }
 
+$(document).ready(function() {
 
+  $("#possible_venues").autocomplete({
+    source: function(request, response) {
+      $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        url: '/lite/ajax/get_possible_venues',
+        data: {query: request.term},
+        success: response
+      });
+    },
+    minLength: 3,
+    delay: 0
+  });
+
+});

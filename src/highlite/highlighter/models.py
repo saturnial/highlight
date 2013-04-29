@@ -5,6 +5,7 @@ class Highlight(models.Model):
   user = models.ForeignKey(User)
   highlight_text = models.CharField(max_length=30)
   timestamp = models.DateTimeField(auto_now_add=True, editable=False)
+  #geonameid = models.IntegerField(required=False)
 
   class Meta:
     get_latest_by = 'timestamp'
